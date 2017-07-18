@@ -23,5 +23,10 @@ export default {
         font-size: 18px;
         line-height: 44px;
         color: #fff;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 4;
     }
 </style>

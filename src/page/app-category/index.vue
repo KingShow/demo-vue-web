@@ -28,6 +28,9 @@ export default {
         font-size: 14px;
         background: #f5f5f5;
         text-align: center;
+        position: fixed;
+        top: 44px;
+        left: 0;
         ul {
             .active{
                 border-left: 3px solid #4ea5ad;

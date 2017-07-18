@@ -1,8 +1,12 @@
 <template>
     <div class="app-dishs">
-        <section v-for="(item, index) in dishs" data-id="item.id">
+        <section v-for="(item, index) in dish_kinds">
             <ul>
-                <li v-for="(it, i) in dishs.data">{{it.name}}</li> 
+                <li v-for="(it, i) in newDishs[item.id]">
+                    <img src="{it.dishimg}" alt="">
+                    <p>{{it.name}}</p>
+                    <p>{{it.norms[0].price}}</p>
+                </li>
             </ul>
         </section>
     </div>
@@ -12,21 +16,16 @@
 import {mapActions, mapState} from 'vuex';
 export default {
     name: 'app-dishs',
-    computed: mapState(['dishs', 'activeIndex', 'newDishs']),
+    computed: mapState(['newDishs', 'activeIndex', 'dish_kinds']),
+    data() {
+        return {
+            dishes: [],
+        }
+    },
     methods: {
         ...mapActions([
             'initDishs',
         ]),
-        dishs() {
-            let dishs = [];
-            Object.keys(newDishs).forEach((item, i) => {
-                dishs.push({
-                    id: item,
-                    data: newDishs[item],
-                })
-            })
-            return dishs;
-        }
     },
     created(){
         this.initDishs();
@@ -34,5 +33,9 @@ export default {
 }
 </script>
 <style lang="less" scoped>
-    
+    .app-dishs{
+        position: absolute;
+        left: 88px;
+        top: 44px;
+    }
 </style>

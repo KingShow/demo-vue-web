@@ -1,8 +1,10 @@
 <template>
   	<div class="home_container">
         <AppHeader></AppHeader>
-        <AppCategory></AppCategory>
-        <AppDishs></AppDishs>
+        <div class="content">
+            <AppCategory></AppCategory>
+            <AppDishs></AppDishs>
+        </div>
     </div>
 </template>
 
@@ -26,6 +28,8 @@ export default {
 
 <style lang="less" scoped>
     .home_container{
-
+      .content{
+        
+      }
     }
 </style>
