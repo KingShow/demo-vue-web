@@ -1,8 +1,4 @@
-const ADD_ITEMNUM = 'ADD_ITEMNUM'
-const REMBER_ANSWER = 'REMBER_ANSWER'
-const REMBER_TIME = 'REMBER_TIME'
-const INITIALIZE_DATA = 'INITIALIZE_DATA'
-const INIT_DISHS = 'INIT_DISHS';
+import {INIT_DISHS,SET_ACTIVE} from './constants'
 export default {
 	/**
 	 *菜品排序
@@ -16,7 +12,7 @@ export default {
 				newDishs[it.id] = []
 			}
 		});
-		const runItem = (id, item) => {
+		let runItem = (id, item) => {
 			if (id) {
 				let newDishsItem = newDishs[id];
 				newDishsItem.push(item);
@@ -28,5 +24,8 @@ export default {
 			})
 		});
 		state.newDishs = newDishs;
+	},
+	[SET_ACTIVE](state, id) {
+		state.activeIndex = id;
 	}
 }

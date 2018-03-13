@@ -18,6 +18,7 @@ const state = {
 	platform_info: DATA.platform_info,
 	wlife: DATA.wlife,
 	newDishs: {},
+	cartsData: {},
 };
 
 export default new Vuex.Store({

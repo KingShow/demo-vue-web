@@ -15,4 +15,7 @@ export default {
 	initDishs({ commit }) {
 		commit('INIT_DISHS');
 	},
+	setActive({commit}, id) {
+		commit('SET_ACTIVE', id);
+	},
 }

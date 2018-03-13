@@ -17,11 +17,11 @@ export default {
 </script>
 <style lang="less" scoped>
     h1{
-        height: 44px;
+        height: 2rem;
         background: #4ea5ad;
         text-align: center;
-        font-size: 18px;
-        line-height: 44px;
+        font-size: .7rem;
+        line-height: 2rem;
         color: #fff;
         position: fixed;
         width: 100%;
