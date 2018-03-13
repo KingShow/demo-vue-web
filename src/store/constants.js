@@ -1,0 +1,6 @@
+export const ADD_ITEMNUM = 'ADD_ITEMNUM'
+export const REMBER_ANSWER = 'REMBER_ANSWER'
+export const REMBER_TIME = 'REMBER_TIME'
+export const INITIALIZE_DATA = 'INITIALIZE_DATA'
+export const INIT_DISHS = 'INIT_DISHS';
+export const SET_ACTIVE = 'SET_ACTIVE';
