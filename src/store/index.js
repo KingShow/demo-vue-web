@@ -19,6 +19,9 @@ const state = {
 	wlife: DATA.wlife,
 	newDishs: {},
 	cartsData: {},
+	cartsOpen: false,
+	totalPrice: 0,
+	totalDishs: 0,
 };
 
 export default new Vuex.Store({

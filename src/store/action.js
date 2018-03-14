@@ -18,4 +18,10 @@ export default {
 	setActive({commit}, id) {
 		commit('SET_ACTIVE', id);
 	},
+	changeCarts({commit}, parmas) {
+		commit('CHANGE_CARTS', parmas);
+	},
+	toggleCartsOpen({commit}) {
+		commit('TOGGLE_CARTS');
+	}
 }

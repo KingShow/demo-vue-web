@@ -3,8 +3,8 @@
         <ul>
             <li v-for="(item, index) in dish_kinds"
                 :class="{'active' : activeIndex == index}"
-                @click="">
-                <a href="#" @click.prevent.stop="setActiveIndex(index)">{{item.name}}</a>
+                @click.prevent.stop="setActiveIndex(index)">
+                <a href="#">{{item.name}}</a>
             </li>
         </ul>
     </aside>
@@ -26,6 +26,7 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+@import url('../../style/bluestyle.less');
     .app-aside{
         width: 4rem;
         overflow: hidden;
@@ -38,7 +39,7 @@ export default {
         bottom: 0;
         ul {
             .active{
-                border-left: 3px solid #4ea5ad;
+                border-left: 3px solid @base-color;
                 background: #fff;
             }
             li {

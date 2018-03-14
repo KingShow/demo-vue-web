@@ -5,6 +5,7 @@
             <AppCategory></AppCategory>
             <AppDishs></AppDishs>
         </div>
+        <AppCarts />
     </div>
 </template>
 
@@ -12,6 +13,7 @@
 import AppHeader from '../app-header'
 import AppCategory from '../app-category'
 import AppDishs from '../app-dishs'
+import AppCarts from '../app-carts'
 
 export default {
 	name: 'home',
@@ -19,6 +21,7 @@ export default {
   		AppHeader,
       AppCategory,
       AppDishs,
+      AppCarts,
   	},
     created(){
         

@@ -16,9 +16,10 @@ export default {
 }
 </script>
 <style lang="less" scoped>
+    @import url('../../style/bluestyle.less');
     h1{
         height: 2rem;
-        background: #4ea5ad;
+        background: @base-color;
         text-align: center;
         font-size: .7rem;
         line-height: 2rem;

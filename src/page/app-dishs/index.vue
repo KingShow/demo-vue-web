@@ -8,11 +8,7 @@
                     <p class="dish-name">{{it.name}}</p>
                     <p class="dish-price">
                         <span class="price">¥{{it.norms[0].price}}</span>
-                        <span class="btn-group">
-                            <i class="decrease-btn">-</i>
-                            <span class="count">20</span>
-                            <i class="increase-btn">+</i>
-                        </span>
+                        <CountGroup :food="it" :count="getCartsItemCout(it.dishsno)"/>
                     </p>
                 </li>
             </ul>
@@ -22,9 +18,13 @@
 
 <script>
 import {mapActions, mapState} from 'vuex';
+import CountGroup from 'components/countgroup';
 export default {
     name: 'app-dishs',
     computed: mapState(['newDishs', 'activeIndex', 'dish_kinds', 'cartsData']),
+    components: {
+        CountGroup
+    },
     data() {
         return {
             dishes: [],
@@ -34,6 +34,9 @@ export default {
         ...mapActions([
             'initDishs',
         ]),
+        getCartsItemCout(sno) {
+            return this.cartsData[sno] && this.cartsData[sno].count ? this.cartsData[sno].count : 0;
+        },
     },
     created(){
         this.initDishs();
@@ -72,32 +75,6 @@ export default {
                             font-size: .65rem;
                             color: #06555d;
                             flex: 0 0 4rem;
-                        }
-                        .btn-group{
-                            flex: 1;
-                            text-align: right;
-                            .increase-btn, .decrease-btn{
-                                width: 1.3rem;
-                                height: 1.3rem;
-                                display: inline-block;
-                                border-radius: 1.3rem;
-                                line-height: 1.1rem;
-                                text-align: center;
-                            }
-                            .increase-btn{
-                                background: #4ea5ad;
-                                border: 1px solid #4ea5ad;
-                                color: #fff;
-                            }
-                            .decrease-btn{
-                                border: 1px solid #4ea5ad;
-                                color: #4ea5ad;
-                            }
-                            .count{
-                                display: inline-block;
-                                font-size: .7rem;
-                                width: 1rem;
-                            }
                         }
                     }
                 }

@@ -1,4 +1,4 @@
-import {INIT_DISHS,SET_ACTIVE} from './constants'
+import {INIT_DISHS,SET_ACTIVE,CHANGE_CARTS, TOGGLE_CARTS} from './constants'
 export default {
 	/**
 	 *菜品排序
@@ -27,5 +27,36 @@ export default {
 	},
 	[SET_ACTIVE](state, id) {
 		state.activeIndex = id;
-	}
+	},
+	[TOGGLE_CARTS](state) {
+		if (state.totalDishs) {
+			state.cartsOpen = !state.cartsOpen;
+		}
+	},
+	[CHANGE_CARTS](state, parmas) {
+		let newCarts = {};
+		let totalDishs = 0;
+		let totalPrice = 0;
+		const {dishsno, name, type, norms} = {...parmas.food};
+		const count = parmas.newCount;
+		const data = state.cartsData;
+		if (data[dishsno]) {
+			data[dishsno].count = count;
+			if (count == 0) {
+				delete data[dishsno];
+			}
+		} else {
+			newCarts[dishsno] = {dishsno, name, type, norms, count};
+			state.cartsData = Object.assign({}, data, newCarts);
+		}
+		Object.keys(state.cartsData).forEach((k, y) => {
+			totalPrice += state.cartsData[k].norms[0].price * 100 * (state.cartsData[k].count);
+			totalDishs += state.cartsData[k].count;
+		});
+		if (totalDishs == 0) {
+			state.cartsOpen = false;
+		}
+		state.totalPrice = totalPrice/100;
+		state.totalDishs = totalDishs;
+	 },
 }
