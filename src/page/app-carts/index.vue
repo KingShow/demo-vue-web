@@ -1,14 +1,14 @@
 <template>
     <div class="app-carts">
-        <ul :class="cartsOpen ? 'show' : 'hide'">
+        <ul :style="cartsOpen ? style.cartHeight : style_hide">
             <li v-for="(it, i) in cartsData">
                 <p class="cart-name">{{it.name}}</p>
                 <CountGroup :food="it" :count="getItemNumber(it.dishsno)"/>
             </li>
         </ul>
         <div class="carts-group">
-            <div class="carts-price group-left" @click="toggleCarts()">¥{{totalPrice}}</div>
-            <button v-if="totalDishs > 0" class="blue-btn group-right">去结算</button>
+            <div class="carts-price group-left" @click="onToggleCarts()">¥{{totalPrice}}</div>
+            <button v-if="totalDishs > 0" class="blue-btn group-right" @click="onClickOk()">去结算</button>
             <button v-else class="default-btn group-right">暂无菜品</button>
         </div>
     </div>
@@ -19,18 +19,26 @@ import {mapActions, mapState} from 'vuex';
 import CountGroup from 'components/countgroup';
 export default {
     name: 'app-carts',
-    computed: mapState(['cartsData', 'cartsOpen', 'totalPrice', 'totalDishs']),
+    computed: mapState(['cartsData', 'cartsOpen', 'totalPrice', 'totalDishs', 'style']),
     components: {
         CountGroup
     },
+    data() {
+        return {
+            style_hide: 'transform: translate3d(0, 9rem, 0);',
+        }
+    },
     methods: {
-        ...mapActions(['toggleCartsOpen']),
+        ...mapActions(['toggleCartsOpen',]),
         getItemNumber(sno) {
             return this.cartsData[sno] && this.cartsData[sno].count ? this.cartsData[sno].count : 0;
         },
-        toggleCarts() {
+        onToggleCarts() {
             this.toggleCartsOpen();
         },
+        onClickOk(){
+            this.$router.push('order');
+        }
     }
 }
 </script>
@@ -54,22 +62,22 @@ export default {
             display: block;
             width: 100%;
             background: #fff;
-            max-height: 7rem;
+            max-height: 8rem;
             overflow-y: auto;
             transition: all .5s;
             li{
                 display: flex;
                 font-size: .6rem;
-                height: 1.5rem;
-                line-height: 1.5rem;
-                margin: .25rem;
+                height: 2rem;
+                line-height: 2rem;
+                margin: 0 .25rem;
                 p{
                     flex: 1;
                 }
                 span{
                     display: inline-block;
-                    line-height: 1.5rem;
-                    height: 1.5rem;
+                    line-height: 2rem;
+                    height: 2rem;
                     flex: 0 0 5rem;
                 }
             }

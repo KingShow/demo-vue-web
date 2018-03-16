@@ -29,11 +29,8 @@ export default [{
         path: '',
         component: r => require.ensure([], () => r(require('../page/home')), 'home')
     }, {
-        path: '/item',
-        component: r => require.ensure([], () => r(require('../page/item')), 'item')
-    }, {
-        path: '/score',
-        component: r => require.ensure([], () => r(require('../page/score')), 'score')
+        path: '/order',
+        component: r => require.ensure([], () => r(require('../page/order')), 'order')
     }]
 }]
 
@@ -53,10 +50,9 @@ export default {
 			commit('ADD_ITEMNUM', 1);
 		}
 	},
-	//初始化信息
-	initializeData({ commit }) {
-		commit('INITIALIZE_DATA');
-	}
+	initDishs({ commit }) {
+        commit('INIT_DISHS');
+    },
 }
 
 ```
@@ -73,25 +69,9 @@ export default {
 	[ADD_ITEMNUM](state, payload) {
 		state.itemNum += payload.num;
 	},
-	//记录答案
-	[REMBER_ANSWER](state, payload) {
-		state.answerid[state.itemNum] = payload.id;
-	},
-	/*
-	记录做题时间
-	 */
-	[REMBER_TIME](state) {
-		state.timer = setInterval(() => {
-			state.allTime++;
-		}, 1000)
-	},
-	/*
-	初始化信息，
-	 */
-	[INITIALIZE_DATA](state) {
-		state.itemNum = 1;
-		state.allTime = 0;
-	},
+    [SET_ACTIVE](state, id) {
+        state.activeIndex = id;
+    },
 }
 ```
 
@@ -106,12 +86,12 @@ import actions from './action'
 Vue.use(Vuex)
 
 const state = {
-	level: '第一周',
-	itemNum: 1,
-	allTime: 0,
-	timer: '',
-	itemDetail: [],
-	answerid: {}
+	activeIndex: 0,
+    dish_kinds: DATA.dish_kinds,
+    dishs: DATA.dishs,
+    tables: DATA.tables,
+    shops: DATA.shops,
+    marketing: DATA.marketing,
 }
 
 export default new Vuex.Store({

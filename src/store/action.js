@@ -20,8 +20,12 @@ export default {
 	},
 	changeCarts({commit}, parmas) {
 		commit('CHANGE_CARTS', parmas);
+		commit('SET_CART_STYLE');
 	},
 	toggleCartsOpen({commit}) {
 		commit('TOGGLE_CARTS');
-	}
+	},
+	setCartsStyle({commit}) {
+		commit('SET_CART_STYLE');
+	},
 }

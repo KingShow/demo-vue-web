@@ -1,4 +1,5 @@
-import {INIT_DISHS,SET_ACTIVE,CHANGE_CARTS, TOGGLE_CARTS} from './constants'
+import {INIT_DISHS,SET_ACTIVE,CHANGE_CARTS, TOGGLE_CARTS, SET_CART_STYLE} from './constants'
+import ajax from '../config/ajax'
 export default {
 	/**
 	 *菜品排序
@@ -32,6 +33,11 @@ export default {
 		if (state.totalDishs) {
 			state.cartsOpen = !state.cartsOpen;
 		}
+	},
+	[SET_CART_STYLE](state) {
+		const height = Number(Object.keys(state.cartsData).length) * 2;
+		const liHeight = height > 8 ? 8 : height;
+		state.style.cartHeight = `transform: translate3d(0, -${liHeight}rem, 0);`;
 	},
 	[CHANGE_CARTS](state, parmas) {
 		let newCarts = {};

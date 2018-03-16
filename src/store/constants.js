@@ -7,3 +7,4 @@ export const SET_ACTIVE = 'SET_ACTIVE';
 export const CHANGE_CARTS = 'CHANGE_CARTS';
 export const GET_COUNT = 'GET_COUNT';
 export const TOGGLE_CARTS = 'TOGGLE_CARTS';
+export const SET_CART_STYLE = 'SET_CART_STYLE';

@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import mutations from './mutations'
 import actions from './action'
-import ajax from '../config/ajax'
 import DATA from './data.json'
 
 
@@ -22,6 +21,9 @@ const state = {
 	cartsOpen: false,
 	totalPrice: 0,
 	totalDishs: 0,
+	style: {
+		cartHeight: '',
+	}
 };
 
 export default new Vuex.Store({
